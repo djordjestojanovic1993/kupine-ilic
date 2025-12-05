@@ -6,8 +6,8 @@ const products = [
     emoji: "blackberry",
     title: "Sveže Kupine",
     description:
-      "Ručno ubrane sveže kupine, savršene za direktnu konzumaciju ili pripremu slastica.",
-    price: "od 5€ / kg",
+      "Ručno ubrane sveže kupine, savršene za direktnu konzumaciju ili pripremu slatkiša.",
+    price: "od 500 RSD / kg",
     gradient: "from-purple-50 to-white",
     border: "border-purple-100 hover:border-purple-300",
     shadow: "hover:shadow-purple-500/20",
@@ -17,8 +17,8 @@ const products = [
     emoji: "🍯",
     title: "Domaći Džem",
     description:
-      "Tradicionalni recept, bez konzervansa. Čisti okus kupina u svakom zalogaju.",
-    price: "od 8€ / staklenka",
+      "Tradicionalni recept, bez konzervansa. Čist ukus kupina u svakom zalogaju.",
+    price: "od 800 RSD / tegla",
     gradient: "from-pink-50 to-white",
     border: "border-pink-100 hover:border-pink-300",
     shadow: "hover:shadow-pink-500/20",
@@ -28,8 +28,8 @@ const products = [
     emoji: "🧊",
     title: "Smrznute Kupine",
     description:
-      "Brzo smrznute na vrhuncu zrelosti. Dostupne cijele godine za vaše smoothije.",
-    price: "od 4€ / kg",
+      "Brzo smrznute na vrhuncu zrelosti. Dostupne cele godine za vaše smoothije.",
+    price: "od 400 RSD / kg",
     gradient: "from-purple-50 to-pink-50",
     border: "border-purple-100 hover:border-purple-300",
     shadow: "hover:shadow-purple-500/20",
@@ -56,7 +56,7 @@ export default function ProductsSection() {
             </span>
           </h2>
           <p className="text-lg text-gray-600 max-w-xl mx-auto">
-            Najbolje sorte kupina, pažljivo uzgojene u idealnim uvjetima
+            Najbolje sorte kupina, pažljivo uzgajane u idealnim uslovima
           </p>
         </div>
 

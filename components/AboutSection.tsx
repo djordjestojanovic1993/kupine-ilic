@@ -8,7 +8,7 @@ const cards = [
   {
     title: "Tradicija",
     description:
-      "Već generacijama naša porodica uzgaja najbolje kupine u regiji. Naša plantaža nalazi se u srcu prirode, daleko od zagađenja.",
+      "Već generacijama naša porodica uzgaja najbolje kupine u regionu. Naša plantaža se nalazi u srcu prirode, daleko od zagađenja.",
     icon: "🌿",
     stat: "15+",
     statLabel: "Godina iskustva",
@@ -16,15 +16,15 @@ const cards = [
   {
     title: "Prirodno",
     description:
-      "Vjerujemo u tradicionalne metode uzgoja bez pesticida i umjetnih gnojiva. Svaka kupina je rezultat ljubavi i poštovanja prema prirodi.",
+      "Verujemo u tradicionalne metode uzgoja bez pesticida i veštačkih đubriva. Svaka kupina je rezultat ljubavi i poštovanja prema prirodi.",
     icon: "🍃",
     stat: "100%",
     statLabel: "Organsko",
   },
   {
-    title: "Kvaliteta",
+    title: "Kvalitet",
     description:
-      "Kupine rastu u čistom zraku i plodnom tlu. Ručno ubiremo svaku bobicu kako bismo osigurali najvišu kvalitetu.",
+      "Kupine rastu u čistom vazduhu i plodnom tlu. Ručno ubiremo svaku bobicu kako bismo obezbedili najviši kvalitet.",
     icon: "✨",
     stat: "500+",
     statLabel: "Zadovoljnih kupaca",

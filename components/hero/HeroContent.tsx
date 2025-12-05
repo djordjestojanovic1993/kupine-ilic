@@ -55,7 +55,7 @@ export default function HeroContent({ mounted }: HeroContentProps) {
           mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
-        Uzgojene s ljubavlju, ubrane s pažnjom. Direktno od proizvođača do vašeg
+        Uzgajane sa ljubavlju, ubrane sa pažnjom. Direktno od proizvođača do vašeg
         stola.
       </p>
 
@@ -76,7 +76,7 @@ export default function HeroContent({ mounted }: HeroContentProps) {
           href="/contact"
           className="group px-8 py-4 border-2 border-white text-white font-semibold rounded-full transition-all duration-300 hover:scale-105 hover:bg-white hover:text-purple-700 hover:shadow-2xl hover:shadow-white/20"
         >
-          Kontaktiraj Nas
+          Kontaktirajte Nas
         </Link>
       </div>
     </div>

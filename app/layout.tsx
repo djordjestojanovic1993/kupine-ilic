@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Kupine Ilić - Sveže Domaće Kupine",
-  description: "Najkvalitetnije domaće kupine uzgojene s ljubavlju",
+  description: "Najkvalitetnije domaće kupine uzgajane sa ljubavlju",
 };
 
 export default function RootLayout({
@@ -24,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="hr">
+    <html lang="sr">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -32,6 +33,7 @@ export default function RootLayout({
         <div className="pt-16">
           {children}
         </div>
+        <Footer />
       </body>
     </html>
   );

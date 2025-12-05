@@ -32,7 +32,7 @@ export default function CTASection() {
 
         {/* Description */}
         <p className="text-lg text-purple-200 mb-8">
-          Kontaktirajte nas za narudžbe, dostavu ili posjet našoj plantaži
+          Kontaktirajte nas za narudžbine, dostavu ili posetu našoj plantaži
         </p>
 
         {/* Button */}
@@ -42,7 +42,7 @@ export default function CTASection() {
         >
           <span className="absolute inset-0 bg-gradient-to-r from-purple-100 to-pink-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           <span className="relative flex items-center gap-2">
-            Kontaktiraj Nas
+            Kontaktirajte Nas
             <svg
               className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
               fill="none"

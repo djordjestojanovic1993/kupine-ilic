@@ -27,7 +27,7 @@ export default function RecipesSection() {
           </h2>
           
           <p className="text-lg md:text-xl text-white/80 mb-8">
-            Ima li išta ljepše
+            Ima li išta lepše
             <br />
             od domaćeg voća?
           </p>

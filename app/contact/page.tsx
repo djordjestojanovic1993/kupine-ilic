@@ -74,7 +74,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 mb-1">Lokacija</h3>
-                  <p className="text-gray-600">Ulica kupina 123<br />10000 Zagreb, Hrvatska</p>
+                  <p className="text-gray-600">Ulica kupina 123<br />11000 Beograd, Srbija</p>
                 </div>
               </div>
             </div>
@@ -86,7 +86,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 mb-1">Telefon</h3>
-                  <p className="text-gray-600">+385 91 234 5678</p>
+                  <p className="text-gray-600">+381 63 123 4567</p>
                 </div>
               </div>
             </div>
@@ -98,7 +98,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 mb-1">Email</h3>
-                  <p className="text-gray-600">info@kupine.hr</p>
+                  <p className="text-gray-600">info@kupine-ilic.rs</p>
                 </div>
               </div>
             </div>
@@ -109,7 +109,7 @@ export default function Contact() {
                   🕐
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 mb-1">Radno Vrijeme</h3>
+                  <h3 className="font-bold text-gray-900 mb-1">Radno Vreme</h3>
                   <p className="text-gray-600">
                     Pon - Pet: 08:00 - 18:00<br />
                     Sub: 08:00 - 14:00<br />
@@ -133,5 +133,6 @@ export default function Contact() {
     </main>
   );
 }
+
 
 
