@@ -8,7 +8,7 @@ export default function StatBox({ stat, label, isVisible }: StatBoxProps) {
   return (
     <div className="flex-shrink-0 text-center">
       <div
-        className={`w-32 h-32 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex flex-col items-center justify-center shadow-xl hover:scale-110 transition-all duration-700 cursor-default ${
+        className={`w-28 h-28 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex flex-col items-center justify-center shadow-xl hover:scale-110 transition-all duration-700 cursor-default ${
           isVisible
             ? "scale-100 opacity-100 rotate-0"
             : "scale-50 opacity-0 rotate-12"
