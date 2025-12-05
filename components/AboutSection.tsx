@@ -7,21 +7,24 @@ import { useEffect, useRef, useState } from "react";
 const cards = [
   {
     title: "Tradicija",
-    description: "Već generacijama naša obitelj uzgaja najbolje kupine u regiji. Naša plantaža nalazi se u srcu prirode, daleko od zagađenja.",
+    description:
+      "Već generacijama naša porodica uzgaja najbolje kupine u regiji. Naša plantaža nalazi se u srcu prirode, daleko od zagađenja.",
     icon: "🌿",
     stat: "15+",
     statLabel: "Godina iskustva",
   },
   {
     title: "Prirodno",
-    description: "Vjerujemo u tradicionalne metode uzgoja bez pesticida i umjetnih gnojiva. Svaka kupina je rezultat ljubavi i poštovanja prema prirodi.",
+    description:
+      "Vjerujemo u tradicionalne metode uzgoja bez pesticida i umjetnih gnojiva. Svaka kupina je rezultat ljubavi i poštovanja prema prirodi.",
     icon: "🍃",
     stat: "100%",
     statLabel: "Organsko",
   },
   {
     title: "Kvaliteta",
-    description: "Kupine rastu u čistom zraku i plodnom tlu. Ručno ubiremo svaku bobicu kako bismo osigurali najvišu kvalitetu.",
+    description:
+      "Kupine rastu u čistom zraku i plodnom tlu. Ručno ubiremo svaku bobicu kako bismo osigurali najvišu kvalitetu.",
     icon: "✨",
     stat: "500+",
     statLabel: "Zadovoljnih kupaca",
@@ -106,7 +109,9 @@ export default function AboutSection() {
             return (
               <div
                 key={card.title}
-                ref={(el) => { cardRefs.current[index] = el; }}
+                ref={(el) => {
+                  cardRefs.current[index] = el;
+                }}
                 className={`flex flex-col md:flex-row items-center gap-8 md:gap-16 transition-all duration-700 ease-out ${
                   index % 2 === 1 ? "md:flex-row-reverse" : ""
                 } ${
@@ -151,15 +156,18 @@ export default function AboutSection() {
                     }`}
                     style={{ transitionDelay: `${index * 300 + 150}ms` }}
                   >
-                    <div className="text-3xl font-bold text-white">{card.stat}</div>
-                    <div className="text-purple-100 text-xs">{card.statLabel}</div>
+                    <div className="text-3xl font-bold text-white">
+                      {card.stat}
+                    </div>
+                    <div className="text-purple-100 text-xs">
+                      {card.statLabel}
+                    </div>
                   </div>
                 </div>
               </div>
             );
           })}
         </div>
-
       </div>
     </section>
   );
