@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import blackberryImg from "@/assets/images/blackberry.png";
-import { useEffect, useRef, useState } from "react";
+import { useScrollReveal, useScrollRevealMultiple } from "@/hooks/useScrollReveal";
 
 const cards = [
   {
@@ -31,45 +31,12 @@ const cards = [
   },
 ];
 
-function useScrollReveal(cardCount: number) {
-  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    // Small delay to ensure refs are populated after initial render
-    const timeout = setTimeout(() => {
-      const observers: IntersectionObserver[] = [];
-
-      cardRefs.current.forEach((ref, index) => {
-        if (!ref) return;
-
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                setVisibleCards((prev) => new Set([...prev, index]));
-                observer.disconnect();
-              }
-            });
-          },
-          { threshold: 0.3, rootMargin: "0px 0px -100px 0px" }
-        );
-
-        observer.observe(ref);
-        observers.push(observer);
-      });
-
-      return () => observers.forEach((obs) => obs.disconnect());
-    }, 100);
-
-    return () => clearTimeout(timeout);
-  }, [cardCount]);
-
-  return { visibleCards, cardRefs };
-}
-
 export default function AboutSection() {
-  const { visibleCards, cardRefs } = useScrollReveal(cards.length);
+  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal<HTMLDivElement>();
+  const { refs: cardRefs, visibleItems } = useScrollRevealMultiple(cards.length, {
+    threshold: 0.2,
+    rootMargin: "0px 0px -100px 0px",
+  });
 
   return (
     <section id="about" className="py-24 bg-white relative overflow-hidden">
@@ -81,13 +48,22 @@ export default function AboutSection() {
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         {/* Header */}
-        <div className="text-center mb-20">
+        <div
+          ref={headerRef}
+          className={`text-center mb-20 transition-all duration-1000 ${
+            headerVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-12"
+          }`}
+        >
           <Image
             src={blackberryImg}
             alt="Kupina"
             width={64}
             height={64}
-            className="w-16 h-16 object-contain mx-auto mb-4 animate-bounce"
+            className={`w-16 h-16 object-contain mx-auto mb-4 transition-all duration-700 ${
+              headerVisible ? "opacity-100 scale-100" : "opacity-0 scale-50"
+            }`}
           />
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
             O{" "}
@@ -103,7 +79,7 @@ export default function AboutSection() {
         {/* Alternating Cards */}
         <div className="space-y-16">
           {cards.map((card, index) => {
-            const isVisible = visibleCards.has(index);
+            const isVisible = visibleItems.has(index);
             const isEven = index % 2 === 0;
 
             return (
@@ -112,31 +88,38 @@ export default function AboutSection() {
                 ref={(el) => {
                   cardRefs.current[index] = el;
                 }}
-                className={`flex flex-col md:flex-row items-center gap-8 md:gap-16 transition-all duration-700 ease-out ${
+                className={`flex flex-col md:flex-row items-center gap-8 md:gap-16 transition-all duration-1000 ease-out ${
                   index % 2 === 1 ? "md:flex-row-reverse" : ""
                 } ${
                   isVisible
                     ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-16"
+                    : "opacity-0 translate-y-20"
                 } ${
-                  isVisible && isEven
+                  isVisible
                     ? "md:translate-x-0"
-                    : !isVisible && isEven
-                    ? "md:-translate-x-12"
-                    : ""
-                } ${
-                  isVisible && !isEven
-                    ? "md:translate-x-0"
-                    : !isVisible && !isEven
-                    ? "md:translate-x-12"
-                    : ""
+                    : isEven
+                    ? "md:-translate-x-16"
+                    : "md:translate-x-16"
                 }`}
-                style={{ transitionDelay: `${index * 300}ms` }}
               >
                 {/* Card */}
-                <div className="flex-1 bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl p-8 md:p-10 border-2 border-purple-100 hover:border-purple-300 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300">
+                <div
+                  className={`flex-1 bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl p-8 md:p-10 border-2 border-purple-100 hover:border-purple-300 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-500 ${
+                    isVisible ? "scale-100" : "scale-95"
+                  }`}
+                  style={{ transitionDelay: "100ms" }}
+                >
                   <div className="flex items-start gap-4 mb-4">
-                    <span className="text-4xl">{card.icon}</span>
+                    <span
+                      className={`text-4xl transition-all duration-500 ${
+                        isVisible
+                          ? "opacity-100 scale-100 rotate-0"
+                          : "opacity-0 scale-50 -rotate-12"
+                      }`}
+                      style={{ transitionDelay: "200ms" }}
+                    >
+                      {card.icon}
+                    </span>
                     <div>
                       <h3 className="text-2xl font-bold text-gray-900 mb-2">
                         {card.title}
@@ -151,17 +134,17 @@ export default function AboutSection() {
                 {/* Stat */}
                 <div className="flex-shrink-0 text-center">
                   <div
-                    className={`w-32 h-32 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex flex-col items-center justify-center shadow-xl hover:scale-110 transition-all duration-500 cursor-default ${
-                      isVisible ? "scale-100 opacity-100" : "scale-75 opacity-0"
+                    className={`w-32 h-32 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex flex-col items-center justify-center shadow-xl hover:scale-110 transition-all duration-700 cursor-default ${
+                      isVisible
+                        ? "scale-100 opacity-100 rotate-0"
+                        : "scale-50 opacity-0 rotate-12"
                     }`}
-                    style={{ transitionDelay: `${index * 300 + 150}ms` }}
+                    style={{ transitionDelay: "300ms" }}
                   >
                     <div className="text-3xl font-bold text-white">
                       {card.stat}
                     </div>
-                    <div className="text-purple-100 text-xs">
-                      {card.statLabel}
-                    </div>
+                    <div className="text-purple-100 text-xs">{card.statLabel}</div>
                   </div>
                 </div>
               </div>
